@@ -1,10 +1,12 @@
 const WebSocket = require('ws');
  
-const wss = new WebSocket.Server({ port: 8080 });
+const port = process.env.PORT || 3000;
+const wss = new WebSocket.Server({ port });
+
+console.log('WebSocket Server Listening at port: ', port);
 
 wss.on('connection', function connection(ws) {
   console.log('Client connected');
-
   ws.on('close', () => console.log('Client disconnected'));
 });
 
